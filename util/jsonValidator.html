@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>JSON Validator</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-5">
+                <textarea id="input"></textarea>
+            </div>
+            <div class="col-xs-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-3">
+                <input type="button" onclick="validateJSON()" value="Validate JSON" />
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function validateJSON() {
+            var input = document.getElementById("input").value;
+            try {
+                JSON.parse(input);
+                alert("Valid JSON");
+            } catch {
+                alert("Invalid JSON");
+            }
+        }
+    </script>
+</body>
+
+</html>

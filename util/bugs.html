@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bulk Bugs</title>
+    </head>
+    <body ng-app="testApp" ng-controller="test">
+        <input type="text" ng-model="bugs"><br>
+        <input type="button" value="Bugs" ng-click="openTabs();">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
+        <script type="text/javascript">
+        var app = angular.module("testApp",[]);
+        app.controller("test",function($scope){
+            console.log("controller loaded");
+            $scope.openTabs=function(){
+                $scope.bugIds=$scope.bugs.split(",") || [];
+                $scope.bugs="";
+                if($scope.bugIds.length>0)
+                    angular.forEach($scope.bugIds, function(bug){
+                        if(bug.trim()!="")
+                        var url = "http://bugzilla.vertoz.com/show_bug.cgi?id="+bug;
+                        var win = window.open(url, '_blank');
+                });
+
+            };
+        });
+        </script>
+        
+    </body>
+</html> 

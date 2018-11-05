@@ -1,0 +1,39 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>
+            Typeof
+        </title>
+        <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    </head>
+    <body>
+        <script>
+            var str =` typeof "str" =  ${typeof "str"}<br>
+                        typeof 2222  = ${typeof 2222}<br>
+                        typeof 22.22  = ${typeof 22.22}<br>
+                        typeof (22/0)  = ${typeof (22/0)}<br>
+                        typeof NaN  = ${typeof NaN}<br>
+                        typeof []  = ${typeof []}<br>
+                        typeof {} = ${typeof {}}<br>
+                        typeof Boolean = ${typeof Boolean}<br>
+                        typeof true = ${typeof true}<br>
+                        typeof Object = ${typeof Object}<br>
+                        typeof Array  = ${typeof Array}<br> 
+                        typeof this = ${typeof this}<br>
+                        typeof window = ${typeof window}<br>
+                        typeof undefined =  ${typeof undefined}<br>
+                        typeof typeof undefined  = ${typeof typeof undefined}<br>
+                        typeof null =  ${typeof null}<br>
+                        typeof new Date() = ${typeof new Date()}<br> 
+                        typeof new Array() =  ${typeof new Array()}<br>
+                        typeof function(){} = ${typeof function(){}}<br>
+                        typeof new Number() = ${typeof new Number()}<br>
+                        typeof new Object() = ${typeof new Object()}<br>
+                        typeof new Boolean() = ${typeof new Boolean()}`;
+            document.write(str);
+            </script>
+    </body>
+</html>

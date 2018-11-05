@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset="utf-8" />
+        <title>ET calculator</title>
+    </head>
+    <body>
+        <input type="text" id="time">
+        <br>
+        <input type="button" onclick="getEt();" value="Get Time">
+        <hr><hr>
+        <label> Beta access controllers</label>
+        <textarea id="betaAccess"></textarea><br>
+        <label> Live access controllers</label>
+        <textarea id="liveAccess"></textarea>
+        <input type="button" onclick="getCombined();" value="Get Combined Controllers">
+        <label> Combined access controllers</label>
+        <textarea id="comAccess"></textarea>
+    </body>
+    <script type="text/javascript">
+    function getEt(){
+        var startTime, endTime, startTimeMins,temp, endTimeHr, tod;
+        startTime = document.getElementById("time").value;
+        console.log(startTime);
+        startTimeMins=parseInt(startTime.split(":")[0]) * 60 + parseInt(startTime.split(":")[1]) ;
+        temp = startTimeMins + (8 * 60) + 17;
+        tod = parseInt(temp/60) > 12 ? "PM": "AM";
+        endTimeHr = parseInt(temp/60) > 12 ? parseInt(temp/60)-12: parseInt(temp/60);
+
+        endTime = endTimeHr + ":" + parseInt(temp%60);
+        alert(endTime + tod);
+    }
+    function getCombined(){
+        var beta = document.getElementById("betaAccess").value;
+        var live = document.getElementById("liveAccess").value;
+        var betaArr = beta.split(",");
+        var liveArr = live.split(",");
+        var temp1 = [];
+        for(var i =0; i<betaArr.length;i++){
+            if(!temp1.includes(betaArr[i])){
+                temp1.push(betaArr[i])
+            }
+        }
+        for(var i =0; i<liveArr.length;i++){
+            if(!temp1.includes(liveArr[i])){
+                temp1.push(liveArr[i])
+            }
+        }
+        console.log(beta.length+">>>>>>>>>"+live.length+">>>>>>>>>"+temp1.length);
+        document.getElementById("comAccess").value = temp1.join(",");
+    }
+    </script>
+</html>
+
+

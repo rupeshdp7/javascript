@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>closure</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var controllers;
+    $.get({
+    url: 'reportipnapi.txt',
+    success: function(txt) {
+        console.log(typeof txt);
+        controllers = txt.split(",");
+        var uniqueControllers = [];
+        console.log(controllers.length);
+        for(var i=0; i<controllers.length; i++){
+            if(controllers[i].includes("/{"))
+                controllers[i] = controllers[i].split("/{")[0];
+            if(!uniqueControllers.includes(controllers[i]))
+                uniqueControllers.push(controllers[i]);
+        }
+        //console.log(uniqueControllers);
+        console.log(uniqueControllers.length);
+        var newControllers = uniqueControllers.join("\r\n");
+        //console.log(newControllers);
+        var fileName = "controllersnew.txt";
+			var uri = 'data:text/plain;charset=utf-8,' + escape(newControllers);
+			var link = document.createElement("a");
+			link.href = uri;
+			link.style.visibility = "hidden";
+			link.download = fileName;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+    }
+});
+    </script>
+</body>
+
+</html>

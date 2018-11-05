@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<input type = "hidden" id="utm_source"/>
+    <input type = "hidden" id="utm_medium"/>
+    <input type = "hidden" id="utm_campaign"/>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<script>
+window.onload = function () {
+var url = document.URL;
+var queryParam = url.split("?")[1] || "";
+var queryParam1 = queryParam.split("&");
+    var params = {};
+    params.utm_source="";
+    params.utm_medium="";
+    params.utm_campaign="";
+    for(var i=0; i<queryParam1.length;i++){
+        if(queryParam1[i].split("=")[0]=="utm_source")
+            params.utm_source = queryParam1[i].split("=")[1]
+        if(queryParam1[i].split("=")[0]=="utm_medium")
+            params.utm_medium = queryParam1[i].split("=")[1]
+        if(queryParam1[i].split("=")[0]=="utm_campaign")
+            params.utm_campaign = queryParam1[i].split("=")[1]    
+    }
+var utm_source = params.utm_source;
+var utm_medium = params.utm_medium;
+var utm_campaign = params.utm_campaign;
+    console.log(params);
+document.getElementById("utm_source").value = utm_source;
+document.getElementById("utm_medium").value = utm_medium;
+document.getElementById("utm_campaign").value = utm_campaign;
+/*
+Create hidden fields with following ids
+1. utm_source
+2. utm_medium
+3. utm_campaign
+*/
+}
+
+for(let i= 0; i<10;i++){ setTimeout(function(){ console.log(i);  },1000);}
+</script>
+</body>
+</html>

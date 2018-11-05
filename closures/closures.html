@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Results</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var intro="global";
+        function outerFunction(firstName) {
+            var intro = "the name is xxxxxxxx ";
+            console.log(firstName);
+            console.log(window.intro +">> window.intro");
+            console.log(this.intro +">> this.intro");
+            console.log(intro);
+            function innerFunction(lastName) {
+                console.log(intro + " " + firstName + " " + lastName);
+                return intro + firstName + lastName;
+            }
+            return innerFunction;
+        }
+
+        var out = outerFunction("Rupesh");
+        console.log(out);
+        var out1 = out("Pawar");
+        var out23 =out("Powar");
+        console.log(out1 + " >>>> "+ out23);
+        var out2 = outerFunction("John");
+        out2("cena");
+        out("test");
+        console.warn("test");
+        console.log(navigator);
+        var ifrm;
+        function mulFun(a){
+            return function(b){
+                return function(c){
+                    return a + b +c;
+                }
+            }
+        }
+        var addition = mulFun(1)(2)(3);
+        console.log(addition);
+    </script>
+</body>
+
+</html>

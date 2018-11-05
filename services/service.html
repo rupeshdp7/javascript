@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="serviceApp">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Services</title>
+    <style>
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body ng-cloak>
+    <div ng-controller="parentController">
+        parent controller <br>
+        name-{{name}}<br>
+        parent - {{parent}}<br>
+        shared obj - {{sharedObj}}
+        <div ng-controller="childController">
+            {{name}}
+            {{parent}}
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-sanitize.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("serviceApp", []);
+        app.service("shareDataService",["$rootScope", function($rootScope){
+            this.sharedObj = 10;
+           
+        }]);
+        // parent controller
+        app.controller("parentController",["$scope", "shareDataService", function($scope, shareDataService){
+            $scope.name = "parent";
+            $scope.sharedObj = shareDataService.sharedObj;
+            console.log($scope.sharedObj);
+            shareDataService.sharedObj = 20;
+            setTimeout(function(){
+                $scope.sharedObj= shareDataService.sharedObj;
+                $scope.$apply();
+                console.log($scope.sharedObj);
+            }, 10000);
+        }]);
+        app.controller("childController",["$scope", "shareDataService", function($scope, shareDataService){
+            // $scope.name = "child";
+            $scope.parent = "test";
+            console.log(shareDataService.sharedObj);
+            setTimeout(function(){
+                shareDataService.sharedObj = 40;
+                console.log(shareDataService.sharedObj);
+            }, 5000)
+        }]);
+        
+    </script>
+
+</body>
+
+</html>

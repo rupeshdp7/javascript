@@ -1,0 +1,8 @@
+var url = document.URL;
+var queryParam = url.split("?")[1] || "";
+var queryParam1 = queryParam.split("&");
+var utm_source = queryParam1[0].split("=")[1] || "";
+var utm_lead = queryParam1[1].split("=")[1] || "";
+console.log("utm_source-"+utm_source+"utm_lead-"+utm_lead);
+
+

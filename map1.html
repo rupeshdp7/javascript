@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Maps</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #map {
+           height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+           height: 100%;
+           margin: 0;
+           padding: 0;
+        }
+        .top-buffer { margin-top:20px; }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label>lat</label>
+            </div>
+            <div class="col-md-4">
+                <label>long</label>
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-md-4">
+                <input type="text" id="lat">
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="long">
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <button class="btn btn-success" onclick="loadMap()">Load</button>
+        </div>
+        <section>
+        <div class="row top-buffer">
+            <div class="col-md-8" style="height: 400px;">
+            <div id="map" style="width: 100%;"></div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <script>
+        var map;
+
+        function loadMap() {
+            let lat = parseFloat(document.getElementById("lat").value) || 70;
+            let long = parseFloat(document.getElementById("long").value) || 70;
+            var obj = {
+                lat: lat,
+                lng: long
+            }
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat : lat, lng : long},
+                zoom: 8
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3V73zYYZg3W-21nUevO1xhmSZkXJRmos&callback=loadMap"
+        async defer></script>
+</body>
+
+</html>

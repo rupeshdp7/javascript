@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Clone Javascript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        function clone(obj){
+            let copy;
+            if("undefined" === typeof obj  || null === obj  || "object"  !== typeof obj){
+                copy = obj;
+            }else if(obj instanceof Array){
+                copy = [];
+                for(let i=0; i < obj.length; i++){
+                    copy[i]  = clone(obj[i])
+                }
+            }else if(obj instanceof Date){
+                copy = new Date();
+                copy.setTime(obj.getTime());
+            }else{
+                copy = {};
+                for ( var key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        copy[key] =clone(obj[key]);
+                    }
+                }
+            }
+            return copy;
+        }
+        var object = {
+            name: "Rupesh",
+            id : 3
+        };
+        var object2 = object;
+        var  array  = [2,3,4] ;
+        var date = new Date();
+        var number = 3;
+        var string = "Rupesh";
+        var nullObj = null;
+        var undefinedObj = undefined;
+        var booleanObj = true;
+        var objectClone = clone(object);
+        var arrayClone  = clone(array);
+        var dateClone = clone(date);
+        var cloneNumber = clone(number);
+        var cloneString = clone(string);
+        var cloneNull = clone(nullObj);
+        var cloneUndef = clone(undefinedObj);
+        var cloneBoolean = clone(booleanObj);
+        
+        var doc = `Clones of following objects :<br>
+                        object: ${JSON.stringify(object) } >>> object2: ${JSON.stringify(object2) } >>> clone of object ${JSON.stringify(objectClone)}<br>
+                        array : ${array} >>> clone of array ${arrayClone}<br>
+                        date : ${date} >>> clone of date ${dateClone}<br>
+                        number : ${number} >>> clone of number ${cloneNumber}<br>
+                        string : ${string} >>> clone of string ${cloneString}<br>
+                        null : ${nullObj} >>> clone of null ${cloneNull}<br>
+                        undefined : ${undefinedObj} >>> clone of undefined ${cloneUndef}<br>
+                        boolean :  ${booleanObj} >>> clone of boolean ${cloneBoolean}<br> `;
+                        object.name = "Rupesh pawar";
+                        doc += `changed object after clone :  ${JSON.stringify(object)} >>> object2: ${JSON.stringify(object2) } >>> clone of object ${JSON.stringify(objectClone)}<br>`;
+        document.write(doc); 
+    </script>
+</body>
+</html>

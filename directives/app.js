@@ -12,7 +12,7 @@ function myController($sc,ms, $window) {
   $sc.name = "Rupesh";
   $sc.stringInp = "BRUNCH";
   $sc.scrambledString = ms.scramble($sc.stringInp);
-  //console.log($sc.scrambledString);
+  console.log($sc.scrambledString);
  /*  setTimeout(function(){
     console.log("timeout");
     $window.location.reload();
@@ -52,16 +52,16 @@ function createDirective(name){
     return {
       restrict: 'E',
       compile: function(tElem, tAttrs){
-        console.log(tElem.html());
-        console.log(name + ': compile');
+        // console.log(tElem.html());
+        // console.log(name + ': compile');
         return {
           pre: function(scope, iElem, iAttrs){
-            console.log(name + ': pre link');
-            console.log(iElem.html());
+            // console.log(name + ': pre link');
+            // console.log(iElem.html());
           },
           post: function(scope, iElem, iAttrs){
-            console.log(name + ': post link');
-            console.log(iElem.html())
+            // console.log(name + ': post link');
+            // console.log(iElem.html())
           }
         }
       }

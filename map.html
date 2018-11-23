@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <style>
+        #map {
+            height: 80%;
+            width: 90%;
+            border: solid 4px #000;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="row">
+                    <label>Lattitude</label>
+                </div>
+                <div class="row">
+                    <input type="text" id="lat">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <label>Longitude</label>
+                </div>
+                <div class="row">
+                    <input type="text" id="lng">
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" onclick="loadMap()">Load</button>
+        </div>
+    </div>
+            <div id="map"></div>
+    <script>
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 19.0759840,
+                    lng: 72.8776560
+                },
+                zoom: 16
+            });
+        }
+
+        function loadMap() {
+            var lat = parseFloat(document.getElementById("lat").value);
+            var lng = parseFloat(document.getElementById("lng").value);
+            var latLong = {
+                lat: lat,
+                lng: lng
+            };
+            console.log(latLong)
+            map.setCenter(latLong);
+            map.setZoom(12);
+            var marker = new google.maps.Marker({
+                position: latLong,
+                map: map,
+                title: "lat:" + latLong.lat + ", long:" + latLong.lng
+            });
+
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+</body>
+
+</html>

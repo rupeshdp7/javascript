@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First Web Page</h2>
+<p>My First Paragraph.</p>
+
+<p id="demo"></p>
+<script src="data.js"></script>
+<script>
+
+var temp=[]; temp2= []
+var len = arr.length;
+console.time("for")
+for(var i=0; i < len; i++){
+temp.push(arr[i] * 2);
+console.log(arr[i])
+}
+console.timeEnd("for");
+
+
+console.time("map");
+arr.map(function(v){
+temp2.push(v*2);
+console.log(v)
+});
+console.timeEnd("map");
+
+
+</script>
+
+</body>
+</html> 

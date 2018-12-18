@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="menuApp" ng-controller="menuController">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Menu Structure</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+/*    .container{
+       display: grid;
+       grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+   } */ 
+   .container{
+       display: flex;
+       flex-wrap: wrap;
+   }
+   </style>
+</head>
+<body>
+    <!-- <table border="1">
+        <tr>
+        <th>Menu</th><th>Submenu</th>
+        </tr>
+        <tr ng-repeat="menu in accountMenu">
+            <td>{{menu.Text}}</td>
+            <td>
+                    <div  ng-repeat="submenu in menu.submenu">
+                        {{submenu.Text}}<br>
+                    </div>
+            </td>
+        </tr>
+    </table> -->
+    <!-- <div class="container">
+        <div ng-repeat="pic in pics">
+            <img  ng-src="{{pic.url}}" height="50px" width="50px" title="{{pic.title}}">
+        </div>
+    </div> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
+    <script src="menuStructure.js"></script>
+    
+</body>
+</html>
